@@ -1,0 +1,69 @@
+name: Capture watchOS screenshot
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "WatchApp.swift"
+      - "DuoFlowWatch.xcodeproj/**"
+      - ".github/workflows/capture-screenshots.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    runs-on: macos-26
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Select an available Apple Watch simulator
+        shell: bash
+        run: |
+          DEVICE_ID="$(xcrun simctl list devices available --json | python3 -c 'import json,sys; d=json.load(sys.stdin)["devices"]; xs=[x for runtime,items in d.items() if runtime.startswith("com.apple.CoreSimulator.SimRuntime.watchOS-") for x in items if x.get("isAvailable") and "Apple Watch" in x["name"]]; print(xs[0]["udid"] if xs else "")')"
+          if [ -z "$DEVICE_ID" ]; then
+            echo "No available Apple Watch simulator was found." >&2
+            exit 1
+          fi
+          echo "DEVICE_ID=$DEVICE_ID" >> "$GITHUB_ENV"
+          xcrun simctl boot "$DEVICE_ID"
+          xcrun simctl bootstatus "$DEVICE_ID" -b
+
+      - name: Build and capture the watch app
+        shell: bash
+        run: |
+          xcodebuild \
+            -project DuoFlowWatch.xcodeproj \
+            -scheme DuoFlowWatch \
+            -configuration Debug \
+            -destination "platform=watchOS Simulator,id=$DEVICE_ID" \
+            -derivedDataPath build/DerivedData \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+          xcrun simctl install "$DEVICE_ID" build/DerivedData/Build/Products/Debug-watchsimulator/DuoFlowWatch.app
+          xcrun simctl launch "$DEVICE_ID" com.skeeb32.duoflow.iphone.watchkitapp
+          sleep 5
+          mkdir -p docs/screenshots
+          xcrun simctl io "$DEVICE_ID" screenshot docs/screenshots/watch-dashboard.png
+
+      - name: Upload screenshot artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: duoflow-watchos-screenshot
+          path: docs/screenshots/watch-dashboard.png
+          if-no-files-found: error
+
+      - name: Commit screenshot to the repository
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/screenshots/watch-dashboard.png
+          if git diff --cached --quiet; then
+            echo "Screenshot is already current."
+            exit 0
+          fi
+          git commit -m "Add watchOS simulator screenshot"
+          git push origin HEAD:main
