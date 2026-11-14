@@ -4,6 +4,10 @@
 
 DuoFlow for watchOS is a glanceable companion for the agenda, priorities, and quick capture.
 
+![DuoFlow watchOS app running in the Apple Watch simulator](docs/screenshots/watch-dashboard.png)
+
+*Captured from the watchOS simulator. The screen shows local sample data before an iPhone snapshot arrives.*
+
 ## Current MVP
 
 - Vertical-paged home, tasks, and quick-capture screens
