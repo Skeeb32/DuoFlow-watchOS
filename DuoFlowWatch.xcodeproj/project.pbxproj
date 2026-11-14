@@ -1,0 +1,25 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {};
+	objectVersion = 60;
+	objects = {
+		B10000000000000000000001 /* WatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000002 /* WatchApp.swift */; };
+		B10000000000000000000002 /* WatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchApp.swift; sourceTree = "<group>"; };
+		B10000000000000000000003 /* DuoFlowWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DuoFlowWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B10000000000000000000004 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		B10000000000000000000005 = {isa = PBXGroup; children = (B10000000000000000000006 /* Sources */, B10000000000000000000007 /* Products */, ); sourceTree = "<group>"; };
+		B10000000000000000000006 /* Sources */ = {isa = PBXGroup; children = (B10000000000000000000002 /* WatchApp.swift */, ); path = .; sourceTree = "<group>"; };
+		B10000000000000000000007 /* Products */ = {isa = PBXGroup; children = (B10000000000000000000003 /* DuoFlowWatch.app */, ); name = Products; sourceTree = "<group>"; };
+		B10000000000000000000008 /* Sources Build Phase */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (B10000000000000000000001 /* WatchApp.swift in Sources */, ); runOnlyForDeploymentPostprocessing = 0; };
+		B10000000000000000000009 /* DuoFlowWatch */ = {isa = PBXNativeTarget; buildConfigurationList = B10000000000000000000010; buildPhases = (B10000000000000000000008 /* Sources Build Phase */, B10000000000000000000004 /* Frameworks */, ); buildRules = (); dependencies = (); name = DuoFlowWatch; productName = DuoFlowWatch; productReference = B10000000000000000000003 /* DuoFlowWatch.app */; productType = "com.apple.product-type.application"; };
+		B10000000000000000000011 /* Project object */ = {isa = PBXProject; attributes = {BuildIndependentTargetsInParallel = 1; LastUpgradeCheck = 1600; }; buildConfigurationList = B10000000000000000000012; compatibilityVersion = "Xcode 15.0"; developmentRegion = en; hasScannedForEncodings = 0; knownRegions = (en, Base, ); mainGroup = B10000000000000000000005; productRefGroup = B10000000000000000000007 /* Products */; projectDirPath = ""; projectRoot = ""; targets = (B10000000000000000000009 /* DuoFlowWatch */, ); };
+		B10000000000000000000013 /* Debug project */ = {isa = XCBuildConfiguration; buildSettings = {SDKROOT = watchos; SWIFT_VERSION = 5.0; }; name = Debug; };
+		B10000000000000000000014 /* Release project */ = {isa = XCBuildConfiguration; buildSettings = {SDKROOT = watchos; SWIFT_VERSION = 5.0; }; name = Release; };
+		B10000000000000000000015 /* Debug target */ = {isa = XCBuildConfiguration; buildSettings = {GENERATE_INFOPLIST_FILE = YES; INFOPLIST_KEY_CFBundleDisplayName = DuoFlow; INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.skeeb32.duoflow.iphone; PRODUCT_BUNDLE_IDENTIFIER = com.skeeb32.duoflow.iphone.watchkitapp; PRODUCT_NAME = "$(TARGET_NAME)"; SDKROOT = watchos; SUPPORTED_PLATFORMS = "watchos watchsimulator"; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 4; WATCHOS_DEPLOYMENT_TARGET = 10.0; }; name = Debug; };
+		B10000000000000000000016 /* Release target */ = {isa = XCBuildConfiguration; buildSettings = {GENERATE_INFOPLIST_FILE = YES; INFOPLIST_KEY_CFBundleDisplayName = DuoFlow; INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.skeeb32.duoflow.iphone; PRODUCT_BUNDLE_IDENTIFIER = com.skeeb32.duoflow.iphone.watchkitapp; PRODUCT_NAME = "$(TARGET_NAME)"; SDKROOT = watchos; SUPPORTED_PLATFORMS = "watchos watchsimulator"; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 4; WATCHOS_DEPLOYMENT_TARGET = 10.0; }; name = Release; };
+		B10000000000000000000010 /* Target config list */ = {isa = XCConfigurationList; buildConfigurations = (B10000000000000000000015 /* Debug target */, B10000000000000000000016 /* Release target */, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		B10000000000000000000012 /* Project config list */ = {isa = XCConfigurationList; buildConfigurations = (B10000000000000000000013 /* Debug project */, B10000000000000000000014 /* Release project */, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+	};
+	rootObject = B10000000000000000000011 /* Project object */;
+}
