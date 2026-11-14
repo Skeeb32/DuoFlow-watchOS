@@ -2,30 +2,27 @@
 
 **Two screens. One smarter you.**
 
-The Apple Watch app is DuoFlow's glanceable companion for agenda, priorities, quick capture, and short actions.
+DuoFlow for watchOS is a glanceable companion for the agenda, priorities, and quick capture.
 
-## Product scope
+## Current MVP
 
-- Watch home with date, weather, next appointment, and task progress
-- Agenda and priority task views
-- Quick reminder and voice-note capture
-- Task completion and small updates sent to iPhone
-- WidgetKit widgets and watch face complications
-- Actionable, restrained notifications and an Always-On-friendly presentation
-- Companion data exchange with [DuoFlow for iPhone](https://github.com/Skeeb32/DuoFlow-iPhone)
+- Vertical-paged home, tasks, and quick-capture screens
+- Complete a task with one tap and send the action to iPhone
+- Send a quick note or reminder to the iPhone app
+- Receive the iPhone task snapshot through WatchConnectivity
+- Clearly labeled local sample tasks while waiting for the iPhone snapshot
+- Compact, low-activity SwiftUI presentation
 
-## Technical direction
+## Open and run
 
-- Native Swift and SwiftUI
-- WatchConnectivity for nearby iPhone–Watch updates
-- WidgetKit for Smart Stack widgets and supported complication families
-- Keep common interactions brief and useful offline where possible
-- Request permissions contextually; handle unavailable permissions and connectivity
+Open `DuoFlowWatch.xcodeproj` in Xcode and run the `DuoFlowWatch` scheme on a watchOS 10 or later simulator or device. Set the development team in Signing & Capabilities for device installation.
 
-## Development status
+The companion bundle identifier is configured as `com.skeeb32.duoflow.iphone.watchkitapp` for the iPhone bundle identifier `com.skeeb32.duoflow.iphone`. Sign both projects with the same team and install them on paired devices to exercise WatchConnectivity.
 
-Repository foundation. Implementation and supported deployment targets are to be defined as development begins.
+## Next
 
-## Related repository
+Add WidgetKit complications and Smart Stack widgets, then connect supported agenda and weather data through permission-aware integrations.
 
-- [DuoFlow for iPhone](https://github.com/Skeeb32/DuoFlow-iPhone) — the primary dashboard and broader planning workspace.
+## Companion
+
+- [DuoFlow for iPhone](https://github.com/Skeeb32/DuoFlow-iPhone)
